@@ -5,9 +5,10 @@ Trainer for the famous typing game ZType (http://zty.pe/)
 1. Head to [zty.pe](http://zty.pe/) to play the game.
 2. In Chrome, open ```Developer Tool```, (press F12 on windows), go to ```Console``` tab, paste and execute the following code:
 ```
-var script = document.createElement("script");script.type = "text/javascript";script.src = "https://cdn.rawgit.com/KevinWang15/ztype-trainer/master/ztype-trainer.js";document.getElementsByTagName("head")[0].appendChild(script);
+var script = document.createElement("script");script.type = "text/javascript";script.src = "https://rawgit.com/KevinWang15/ztype-trainer/master/ztype-trainer.js";document.getElementsByTagName("head")[0].appendChild(script);
 ```
-3. Enjoy the trainer
+
+Enjoy the trainer!
 
 ## Key Bindings
 |Shortcut|Function|
