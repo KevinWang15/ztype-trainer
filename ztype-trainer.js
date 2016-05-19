@@ -57,7 +57,23 @@
                     if (!!entity.remainingWord && ig.game.currentTarget == entity && !!entity.remainingWord != entity.word)
                         ig.game.currentTarget = null;
                 });
+            },
 
+            godMode: function () {
+                cheats.machineGun();
+                var allKilled = true;
+                for (var i = 0; i < ig.game.entities.length; i++) {
+                    if (!ig.game.entities[i].word)
+                        continue;
+                    if (!ig.game.entities[i].killed) {
+                        allKilled = false;
+                        break;
+                    }
+                }
+                if (allKilled) return;
+                ig.game.player.spawnEMP();
+                ig.game.emps = 100000;
+                ig.game.screenShake(80);
             },
 
             machineGun: function () {
@@ -71,7 +87,8 @@
                         }
                     }
                     ig.game.currentTarget = ig.game.entities[maxYIndex];
-                    if (!!ig.game.currentTarget && !!ig.game.currentTarget.target)ig.game.currentTarget.target();
+                    if (!!ig.game.currentTarget && !!ig.game.currentTarget.target)
+                        ig.game.currentTarget.target();
                 }
                 if (!!ig.game.currentTarget && !!ig.game.currentTarget.remainingWord)
                     ig.game.shoot(ig.game.currentTarget.remainingWord[0]);
@@ -80,22 +97,17 @@
 
         function cheatOn(name, interval) {
             cheatOff(name);
+            // console.log(name, 'on', interval);
             intervals[name] = setInterval(cheats[name], interval);
-            console.log(intervals[name], 'on', name);
         };
 
         function cheatOff(name) {
-            console.log(intervals[name], 'off', name);
+            // console.log(name, 'off');
             if (!!intervals[name])
                 clearInterval(intervals[name]);
+            intervals[name] = null;
         };
 
-        function cheatToggle(name) {
-            if (!!intervals[name])
-                cheatOff(name);
-            else
-                cheatOn(name, 100);
-        };
 
         var originalFuncs = {};
         var machineGunState = 0;
@@ -108,7 +120,6 @@
                 window.trainer.toggleMachineGun();
 
             if (e.keyCode == 50) {
-                console.log('1');
                 if (!originalFuncs['shoot'])
                     window.trainer.manualMachineGun();
                 else
@@ -122,10 +133,10 @@
                 window.trainer.unlimitedEmp();
 
             if (e.keyCode == 53)
-                window.trainer.killAll();
+                window.trainer.toggleGodMode();
 
             if (e.keyCode == 54)
-                window.trainer.shootThemAllToDeath();
+                window.trainer.shotgun();
 
             if (e.keyCode == 55)
                 window.trainer.aLotOfEnemies();
@@ -170,7 +181,13 @@
             },
 
             noScreenShake: function () {
-                ig.game.screenShake = function (strength) {
+                if (!originalFuncs['screenShake']) {
+                    originalFuncs['screenShake'] = ig.game.screenShake;
+                    ig.game.screenShake = function (strength) {
+                    }
+                } else {
+                    ig.game.screenShake = originalFuncs['screenShake'];
+                    originalFuncs['screenShake'] = null;
                 }
             },
 
@@ -208,7 +225,25 @@
             },
 
             toggleInstantKill: function () {
-                cheatToggle('instantKill');
+                if (!!intervals['instantKill'])
+                    window.trainer.instantKillOff();
+                else
+                    window.trainer.instantKill();
+            },
+
+            godMode: function () {
+                cheatOn('godMode', 26);
+            },
+
+            godModeOff: function () {
+                cheatOff('godMode');
+            },
+
+            toggleGodMode: function () {
+                if (!!intervals['godMode'])
+                    window.trainer.godModeOff();
+                else
+                    window.trainer.godMode();
             },
 
             machineGun: function () {
@@ -241,7 +276,7 @@
                 }
             },
 
-            shootThemAllToDeath: function () {
+            shotgun: function () {
                 ig.game.entities.forEach(function (entity) {
                     if (!entity.remainingWord) return;
                     for (var j = 0; j < entity.remainingWord.length; j++)
