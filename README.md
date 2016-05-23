@@ -2,14 +2,24 @@
 Trainer for the famous typing game ZType (http://zty.pe/)
 
 ## How to use
+
+###Online
 1. Head to [zty.pe](http://zty.pe/) to play the game.
 2. In Chrome, open ```Developer Tool```, (press F12 on windows), go to ```Console``` tab, paste and execute the following code:
 ```
 var script = document.createElement("script");script.type = "text/javascript";script.src = "https://rawgit.com/KevinWang15/ztype-trainer/master/ztype-trainer.js";document.getElementsByTagName("head")[0].appendChild(script);
 ```
 
-Enjoy the trainer!
+###Offline
+Just clone this repo and use an http-server to serve the website.
 
+e.g. Using [http-server](https://www.npmjs.com/package/http-server)
+
+	git clone https://github.com/KevinWang15/ztype-trainer
+	cd ztype-trainer
+	http-server
+
+and visit ```http://localhost:8080```
 ## Key Bindings
 |Shortcut|Function|
 |----|----|
