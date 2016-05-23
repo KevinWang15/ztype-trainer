@@ -20,6 +20,11 @@ e.g. Using [http-server](https://www.npmjs.com/package/http-server)
 	http-server
 
 and visit ```http://localhost:8080```
+
+###RawGit.com ***[(http://rawgit.com/)](http://rawgit.com/)***
+Served via [MaxCDN](https://www.maxcdn.com/)
+http://cdn.rawgit.com/KevinWang15/ztype-trainer/master/index.html
+
 ## Key Bindings
 |Shortcut|Function|
 |----|----|
