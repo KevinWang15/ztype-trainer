@@ -31,7 +31,7 @@
         document.getElementsByTagName("head")[0].appendChild(script);
     }
 
-    loadScript("http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js", function () {
+    loadScript("https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js", function () {
 
         if (!!window.trainer)
             window.trainer.deactivateAll();
