@@ -3,14 +3,14 @@ Trainer for the famous typing game ZType (http://zty.pe/)
 
 ## How to use
 
-###Online
+### Online
 1. Head to [zty.pe](http://zty.pe/) to play the game.
 2. In Chrome, open ```Developer Tool```, (press F12 on windows), go to ```Console``` tab, paste and execute the following code:
 ```
-var script = document.createElement("script");script.type = "text/javascript";script.src = "https://rawgit.com/KevinWang15/ztype-trainer/master/ztype-trainer.js";document.getElementsByTagName("head")[0].appendChild(script);
+var script = document.createElement("script");script.type = "text/javascript";script.src = "https://cdn.jsdelivr.net/gh/KevinWang15/ztype-trainer@master/ztype-trainer.js";document.getElementsByTagName("head")[0].appendChild(script);
 ```
 
-###Offline
+### Offline
 Just clone this repo and use an http-server to serve the website.
 
 e.g. Using [http-server](https://www.npmjs.com/package/http-server)
@@ -20,10 +20,6 @@ e.g. Using [http-server](https://www.npmjs.com/package/http-server)
 	http-server
 
 and visit ```http://localhost:8080```
-
-###RawGit.com ***[(http://rawgit.com/)](http://rawgit.com/)***
-Served via [MaxCDN](https://www.maxcdn.com/)
-http://cdn.rawgit.com/KevinWang15/ztype-trainer/master/index.html
 
 ## Key Bindings
 |Shortcut|Function|
